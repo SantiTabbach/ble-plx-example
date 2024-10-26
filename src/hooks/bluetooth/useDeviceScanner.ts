@@ -16,6 +16,11 @@ interface Args {
   setScanner: React.Dispatch<React.SetStateAction<ScannerStatus>>;
 }
 
+const devicesToScan = [
+  GLUCOSE_SERVICES.glucose,
+  //FOO_SERVICES.foo
+];
+
 const useDeviceScanner = ({ scanner, setScanner }: Args) => {
   const blePermissionsState = useBle((state) => state.blePermissionsState);
   const { manager } = useBluetoothConnection();
@@ -35,7 +40,7 @@ const useDeviceScanner = ({ scanner, setScanner }: Args) => {
     setScanner(ScannerStatus.SCANNING);
 
     await manager.startDeviceScan(
-      [GLUCOSE_SERVICES.glucose],
+      devicesToScan,
       { allowDuplicates: false, callbackType: ScanCallbackType.AllMatches },
       async (error: null | BleError, device) => {
         console.log({ error, device: device?.id });
@@ -69,9 +74,7 @@ const useDeviceScanner = ({ scanner, setScanner }: Args) => {
         scanner === ScannerStatus.IDLE
       ) {
         // Workaround for -> BleError: Operation was cancelled
-        const connectedDevices = await manager.connectedDevices([
-          GLUCOSE_SERVICES.glucose,
-        ]);
+        const connectedDevices = await manager.connectedDevices(devicesToScan);
 
         if (isEmpty(connectedDevices)) {
           await startDeviceScan();
