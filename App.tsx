@@ -5,10 +5,12 @@ import { useEffect } from 'react';
 import { useRequestBlePermissions } from './src/hooks/bluetooth/useRequestBlePermissions';
 import { useBle } from './src/data/ble.store';
 import Home from './src/pages/Home';
+import { useLoadFonts } from './src/hooks/useLoadFonts';
 
 global.Buffer = require('buffer').Buffer;
 
 export default function App() {
+  useLoadFonts();
   const setBlePermissionsState = useBle(
     (state) => state.setBlePermissionsState
   );
@@ -44,7 +46,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
