@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import { BluetoothConnectionProvider } from './src/contexts/bluetooth-manager.context';
 import { useEffect } from 'react';
-import { useRequestBlePermissions } from './src/hooks/bluetooth/useRequestBlePermissions';
+import { useRequestPermissions } from './src/hooks/bluetooth/useRequestPermissions';
 import { useBle } from './src/data/ble.store';
 import Home from './src/pages/Home';
 import { useLoadFonts } from './src/hooks/useLoadFonts';
@@ -15,7 +15,7 @@ export default function App() {
   const setBlePermissionsState = useBle(
     (state) => state.setBlePermissionsState
   );
-  const requestPermission = useRequestBlePermissions();
+  const requestPermission = useRequestPermissions();
 
   useEffect(() => {
     const checkPermissions = async () => {
