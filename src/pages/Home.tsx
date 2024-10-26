@@ -1,19 +1,15 @@
-import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import useBleConnections from '@/src/hooks/bluetooth/useBleConnections';
-import { useGlucometerDevice } from '@/src/data/glucometer-device.store';
+import useGlucoseMeasurement from '../hooks/glucose/useGlucoseMeasurement';
 
 const Home = () => {
-  const device = useGlucometerDevice((state) => state.device);
+  const { measurement } = useGlucoseMeasurement();
   useBleConnections();
 
   return (
     <View>
-      {device ? (
-        <Text>{device.id} connected</Text>
-      ) : (
-        <Text>Searching devices...</Text>
-      )}
+      <Text>{JSON.stringify(measurement)}</Text>
     </View>
   );
 };
