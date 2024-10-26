@@ -18,8 +18,8 @@ const useConnectedDevice = () => {
           connectToDeviceLogger('Glucometer device connected successfully');
         }
         // else if (service.uuid === FOO_SERVICES.foo){
-        //   setGlucometerDevice(connectedDevice);
-        //   connectToDeviceLogger('Glucometer device connected successfully');
+        //   setFooDevice(connectedDevice);
+        //   connectToDeviceLogger('Foo device connected successfully');
         // }
       });
     },
