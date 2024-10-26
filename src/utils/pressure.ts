@@ -9,6 +9,7 @@ import {
   KPA_CONVERSION_FACTOR,
   UNIT,
 } from '../constants/pressure';
+import { processPressureMeasurementLogger } from './logs';
 
 export const calculateLocalIdFromPressureRawHex = (
   deviceDate: string,
@@ -52,7 +53,9 @@ export const getBloodPressureMeasurement = (
 
   if (heartRate) {
     if (heartRate > 220) {
-      console.log('Heart Rate value is too high, adjusting...');
+      processPressureMeasurementLogger(
+        'Heart Rate value is too high, adjusting...'
+      );
       heartRate = Math.round(heartRate / 4);
     }
   }

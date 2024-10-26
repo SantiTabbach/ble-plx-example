@@ -6,6 +6,7 @@ import { useRequestBlePermissions } from './src/hooks/bluetooth/useRequestBlePer
 import { useBle } from './src/data/ble.store';
 import Home from './src/pages/Home';
 import { useLoadFonts } from './src/hooks/useLoadFonts';
+import { BluetoothLogger } from './src/utils/logs';
 
 global.Buffer = require('buffer').Buffer;
 
@@ -21,7 +22,7 @@ export default function App() {
       const grantedPermissions = await requestPermission();
 
       if (!grantedPermissions) {
-        console.log('Bt permission not granted'); // Show a message or something to the user
+        BluetoothLogger('permission not granted'); // Show a message or something to the user
       } else {
         setBlePermissionsState('granted');
       }

@@ -49,8 +49,9 @@ const useRealtimePressureMeasurement = () => {
       ) as Characteristic;
 
       if (!bloodPressureCharacteristic) {
-        console.error(
-          `Characteristic with UUID ${PRESSURE_CHARACTERISTICS.bpm} not found`
+        realtimePressureMeasurementLogger(
+          `Characteristic with UUID ${PRESSURE_CHARACTERISTICS.bpm} not found`,
+          LogLevel.Error
         );
         return;
       }
@@ -68,7 +69,11 @@ const useRealtimePressureMeasurement = () => {
         setSubscription(
           bloodPressureCharacteristic.monitor((error, characteristic) => {
             if (error) {
-              console.error('Monitor error:', error);
+              realtimePressureMeasurementLogger(
+                `Monitor error: ${error}`,
+                LogLevel.Error
+              );
+
               return;
             }
 
@@ -95,8 +100,9 @@ const useRealtimePressureMeasurement = () => {
           })
         );
       } else {
-        console.error(
-          `Characteristic with UUID ${PRESSURE_CHARACTERISTICS.bpm} is not notifiable or indicatable`
+        realtimePressureMeasurementLogger(
+          `Characteristic with UUID ${PRESSURE_CHARACTERISTICS.bpm} is not notifiable or indicatable`,
+          LogLevel.Error
         );
       }
     } catch (error) {

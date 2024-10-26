@@ -1,5 +1,6 @@
 export enum LogKeys {
   // BleLogKeys
+  bluetooth = 'Bluetooth',
   startDeviceScan = 'StartDeviceScan',
   stopDeviceScan = 'StopDeviceScan',
   connectToDevice = 'ConnectToDevice',

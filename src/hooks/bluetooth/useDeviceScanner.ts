@@ -43,7 +43,6 @@ const useDeviceScanner = ({ scanner, setScanner }: Args) => {
       devicesToScan,
       { allowDuplicates: false, callbackType: ScanCallbackType.AllMatches },
       async (error: null | BleError, device) => {
-        console.log({ error, device: device?.id });
         if (error) {
           startDeviceScanLogger(
             'Error on scan - ' + error.message,

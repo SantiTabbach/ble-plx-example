@@ -4,6 +4,11 @@ export const logger = (logsKey: LogKeys, message: string, level: LogLevel) => {
   console[level](`[${logsKey}] - ${message}`);
 };
 
+export const BluetoothLogger = (
+  message: string,
+  level: LogLevel = LogLevel.Log
+) => logger(LogKeys.bluetooth, message, level);
+
 export const startDeviceScanLogger = (
   message: string,
   level: LogLevel = LogLevel.Log
