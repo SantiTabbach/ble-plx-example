@@ -26,7 +26,7 @@ const usePressureMeasurement = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [device, listenMeasurement, isMeasuring]);
 
-  return { measurement };
+  return { measurement, device };
 };
 
 export default usePressureMeasurement;
