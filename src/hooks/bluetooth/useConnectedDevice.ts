@@ -1,11 +1,11 @@
 import { useCallback } from 'react';
 import type { Device } from 'react-native-ble-plx';
-import { GLUCOSE_SERVICES } from '@/src/constants/bluetooth';
-import { useGlucometerDevice } from '@/src/data/glucometer-device.store';
+import { PRESSURE_CHARACTERISTICS } from '@/src/constants/bluetooth';
+import { usePressureDevice } from '@/src/data/pressure-device.store';
 import { connectToDeviceLogger } from '@/src/utils/logs';
 
 const useConnectedDevice = () => {
-  const setGlucometerDevice = useGlucometerDevice((state) => state.setDevice);
+  const setPressureDevice = usePressureDevice((state) => state.setDevice);
 
   const workWithConnectedDevice = useCallback(
     async (connectedDevice: Device) => {
@@ -13,9 +13,9 @@ const useConnectedDevice = () => {
       const services = await connectedDevice.services();
 
       services.forEach((service) => {
-        if (service.uuid === GLUCOSE_SERVICES.glucose) {
-          setGlucometerDevice(connectedDevice);
-          connectToDeviceLogger('Glucometer device connected successfully');
+        if (service.uuid === PRESSURE_CHARACTERISTICS.bps) {
+          setPressureDevice(connectedDevice);
+          connectToDeviceLogger('Blood pressure device connected successfully');
         }
         // else if (service.uuid === FOO_SERVICES.foo){
         //   setFooDevice(connectedDevice);
@@ -23,7 +23,7 @@ const useConnectedDevice = () => {
         // }
       });
     },
-    [setGlucometerDevice]
+    [setPressureDevice]
   );
 
   return { workWithConnectedDevice };

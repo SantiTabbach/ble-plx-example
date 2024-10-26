@@ -7,7 +7,7 @@ import { useBle } from '@/src/data/ble.store';
 import { useBluetoothConnection } from '@/src/contexts/bluetooth-manager.context';
 import { ScannerStatus } from '@/src/enums/ble';
 import useDeviceConnection from './useDeviceConnection';
-import { GLUCOSE_SERVICES } from '@/src/constants/bluetooth';
+import { PRESSURE_CHARACTERISTICS } from '@/src/constants/bluetooth';
 import { isYuwellDevice } from '@/src/utils/bluetooth';
 import { isEmpty } from '@/src/utils/array';
 
@@ -17,7 +17,7 @@ interface Args {
 }
 
 const devicesToScan = [
-  GLUCOSE_SERVICES.glucose,
+  PRESSURE_CHARACTERISTICS.bps,
   //FOO_SERVICES.foo
 ];
 

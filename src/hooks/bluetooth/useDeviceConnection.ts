@@ -1,4 +1,4 @@
-import { useGlucometerDevice } from '@/src/data/glucometer-device.store';
+import { usePressureDevice } from '@/src/data/pressure-device.store';
 import { ScannerStatus } from '@/src/enums/ble';
 import { useCallback, useEffect, useState } from 'react';
 import type { BleError, Device, Subscription } from 'react-native-ble-plx';
@@ -17,9 +17,7 @@ interface Args {
 
 const useDeviceConnection = ({ setScanner }: Args) => {
   const [connectedDevice, setConnectedDevice] = useState<Device | null>(null);
-  const removeGlucometerDevice = useGlucometerDevice(
-    (state) => state.resetState
-  );
+  const removePressureDevice = usePressureDevice((state) => state.resetState);
 
   const { workWithConnectedDevice } = useConnectedDevice();
   const { manager } = useBluetoothConnection();
@@ -63,7 +61,7 @@ const useDeviceConnection = ({ setScanner }: Args) => {
             }
             setConnectedDevice(null);
             setScanner(ScannerStatus.IDLE);
-            removeGlucometerDevice();
+            removePressureDevice();
 
             disconnectFromDeviceLogger(
               `Device with id ${disconnectedDevice.id} has been disconnected`
