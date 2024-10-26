@@ -28,7 +28,7 @@ const MeasurementResult = ({ measurement }: Props) => {
     <View style={styles.container}>
       <Text style={styles.title}>Last measurement result:</Text>
       <DataComponent value={measurement?.diastolic} label="Diastolic" />
-      <DataComponent value={measurement?.systolic} label="Sistolic" />
+      <DataComponent value={measurement?.systolic} label="Systolic" />
       <DataComponent value={measurement?.heartRate} label="Heart rate" />
     </View>
   );
