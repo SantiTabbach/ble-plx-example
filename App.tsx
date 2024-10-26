@@ -6,6 +6,8 @@ import { useRequestBlePermissions } from './src/hooks/bluetooth/useRequestBlePer
 import { useBle } from './src/data/ble.store';
 import Home from './src/pages/Home';
 
+global.Buffer = require('buffer').Buffer;
+
 export default function App() {
   const setBlePermissionsState = useBle(
     (state) => state.setBlePermissionsState
