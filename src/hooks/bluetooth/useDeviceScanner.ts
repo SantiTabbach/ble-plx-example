@@ -23,8 +23,9 @@ const devicesToScan = [
 
 const useDeviceScanner = ({ scanner, setScanner }: Args) => {
   const blePermissionsState = useBle((state) => state.blePermissionsState);
-  const { manager } = useBluetoothConnection();
   const setBleState = useBle((state) => state.setBleState);
+
+  const { manager } = useBluetoothConnection();
 
   const { connectToDevice } = useDeviceConnection({
     setScanner,
@@ -72,13 +73,8 @@ const useDeviceScanner = ({ scanner, setScanner }: Args) => {
         newState === State.PoweredOn &&
         scanner === ScannerStatus.IDLE
       ) {
-        // Workaround for -> BleError: Operation was cancelled
-        const connectedDevices = await manager.connectedDevices(devicesToScan);
-
-        if (isEmpty(connectedDevices)) {
-          await startDeviceScan();
-          subscription.remove();
-        }
+        await startDeviceScan();
+        subscription.remove();
       }
     }, true);
 

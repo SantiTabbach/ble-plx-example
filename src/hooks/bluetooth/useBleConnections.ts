@@ -1,5 +1,5 @@
-import { ScannerStatus } from '@/src/enums/ble';
 import { useState } from 'react';
+import { ScannerStatus } from '@/src/enums/ble';
 import useDeviceScanner from './useDeviceScanner';
 
 const useBleConnections = () => {
