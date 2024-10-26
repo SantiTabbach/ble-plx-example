@@ -29,16 +29,6 @@ export const getDeviceServicesLogger = (
   level: LogLevel = LogLevel.Log
 ) => logger(LogKeys.getDeviceServices, message, level);
 
-export const syncRecordsLogger = (
-  message: string,
-  level: LogLevel = LogLevel.Log
-) => logger(LogKeys.syncGlucoseRecords, message, level);
-
-export const realtimeMeasurementLogger = (
-  message: string,
-  level: LogLevel = LogLevel.Log
-) => logger(LogKeys.realtimeGlucoseMeasurement, message, level);
-
 export const realtimePressureMeasurementLogger = (
   message: string,
   level: LogLevel = LogLevel.Log
