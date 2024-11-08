@@ -41,3 +41,4 @@ ios
 .env
 .sentryclirc
 
+coverage/**/*
