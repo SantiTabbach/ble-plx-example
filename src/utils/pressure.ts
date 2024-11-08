@@ -11,21 +11,13 @@ import {
 } from '../constants/pressure';
 import { processPressureMeasurementLogger } from './logs';
 
-export const calculateLocalIdFromPressureRawHex = (
-  deviceDate: string,
-  deviceId: string,
-  heartRate: number
-): string => {
-  return `${deviceId} - ${heartRate} - ${deviceDate}`;
-};
-
 const convertValue = (value: number, flags: number) => {
   return isFlagPresent(flags, FLAGS.UNIT)
     ? value * KPA_CONVERSION_FACTOR
     : value;
 };
 
-export const getBloodPressureMeasurement = (
+const getBloodPressureMeasurement = (
   buffer: Buffer,
   flags: number
 ): {
