@@ -12,8 +12,6 @@ export const findActionById = (
   id: string
 ) => {
   const result = payload.find((service) => service.uuid === id);
-  if (!result) {
-    throw new Error('NOT FOUND ' + id);
-  }
+
   return result;
 };
