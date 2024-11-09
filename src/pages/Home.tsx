@@ -1,13 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import useBleConnections from '@/src/hooks/bluetooth/useBleConnections';
-import usePressureMeasurement from '../hooks/pressure/usePressureMeasurement';
-import Animation from '../components/Animation';
-import MeasurementResult from '../components/MeasurementResult';
+import usePressureMeasurement from '@/src/hooks/pressure/usePressureMeasurement';
+import Animation from '@/src/components/Animation';
+import MeasurementResult from '@/src/components/MeasurementResult';
 
-const scanAnimation = require('../../animations/scan-animation.json') as string;
-const measurenimation =
-  require('../../animations/measure-animation.json') as string;
+const scanAnimation = require('@/animations/scan-animation.json') as string;
+const measureAnimation =
+  require('@/animations/measure-animation.json') as string;
 
 const Home = () => {
   const { measurement, device } = usePressureMeasurement();
@@ -18,7 +18,10 @@ const Home = () => {
       <Text style={styles.title}>
         {device ? 'Measuring...' : 'Scanning devices...'}
       </Text>
-      <Animation animation={device ? measurenimation : scanAnimation} />
+      <Animation
+        testID="Animation"
+        animation={device ? measureAnimation : scanAnimation}
+      />
       <MeasurementResult measurement={measurement} />
     </View>
   );

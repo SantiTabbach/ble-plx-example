@@ -6,6 +6,7 @@ const dimensions = Dimensions.get('screen');
 
 interface Props {
   animation: string;
+  testID: string;
 }
 
 const Animation = ({ animation }: Props) => {
