@@ -29,11 +29,6 @@ export const disconnectFromDeviceLogger = (
   level: LogLevel = LogLevel.Log
 ) => logger(LogKeys.disconnectFromDevice, message, level);
 
-export const getDeviceServicesLogger = (
-  message: string,
-  level: LogLevel = LogLevel.Log
-) => logger(LogKeys.getDeviceServices, message, level);
-
 export const realtimePressureMeasurementLogger = (
   message: string,
   level: LogLevel = LogLevel.Log
