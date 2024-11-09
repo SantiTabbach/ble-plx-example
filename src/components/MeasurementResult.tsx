@@ -16,7 +16,7 @@ const DataComponent = ({ value, label }: DataComponentProps) => {
   const color = value ? '#4da75c' : '#A3A3A3';
 
   return (
-    <View style={styles.dataRow}>
+    <View testID="DataComponent" style={styles.dataRow}>
       <Text style={styles.label}>{label}</Text>
       <Text style={[styles.value, { color }]}>{value ?? EMPTY_DATA}</Text>
     </View>
