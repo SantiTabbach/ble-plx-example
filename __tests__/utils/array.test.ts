@@ -5,7 +5,7 @@ describe('The array file', () => {
     const filledArrayMock = ['a', 'b', 'c'];
     const emptyArrayMock: any[] = [];
 
-    expect(isEmpty(filledArrayMock)).toBeTruthy();
-    expect(isEmpty(emptyArrayMock)).toBeFalsy();
+    expect(isEmpty(emptyArrayMock)).toBeTruthy();
+    expect(isEmpty(filledArrayMock)).toBeFalsy();
   });
 });
