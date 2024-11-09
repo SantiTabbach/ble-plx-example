@@ -1,19 +1,17 @@
 import LottieView from 'lottie-react-native';
 import React, { useRef } from 'react';
-import { Dimensions } from 'react-native';
-
-const dimensions = Dimensions.get('screen');
 
 interface Props {
   animation: string;
-  testID: string;
+  testID?: string;
 }
 
-const Animation = ({ animation }: Props) => {
+const Animation = ({ animation, testID = 'Animation' }: Props) => {
   const animationRef = useRef(null);
 
   return (
     <LottieView
+      testID={testID}
       autoPlay
       loop={true}
       ref={animationRef}
