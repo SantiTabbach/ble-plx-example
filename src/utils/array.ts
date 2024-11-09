@@ -1,3 +1,3 @@
 export const isEmpty = <T>(array: T[]): boolean => {
-	return array.length === 0;
+  return array.length === 0;
 };
