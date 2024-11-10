@@ -40,6 +40,8 @@ The goal is to offer a clean architecture where the app can handle BLE devices t
 - **react-native-ble-plx**
 - **Zustand**
 - **TypeScript**
+- **Jest**
+- **React Testing Library**
 
 ## Diagrams
 
