@@ -26,6 +26,11 @@ The goal is to offer a clean architecture where the app can handle BLE devices t
    yarn start
    ```
 
+## Run tests
+   ```bash
+   yarn test
+   ```
+
 ## Features
 
 - **Automatic Device Scanning**: Automatically searches and connects to BLE devices based on predefined characteristics.
