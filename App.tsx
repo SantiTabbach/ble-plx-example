@@ -13,7 +13,7 @@ export default function App() {
     <BluetoothConnectionProvider>
       <View style={styles.container}>
         {appReady && <Home />}
-        <StatusBar test-ID="StatusBar" style="auto" />
+        <StatusBar style="auto" />
       </View>
     </BluetoothConnectionProvider>
   );

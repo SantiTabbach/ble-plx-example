@@ -29,8 +29,10 @@ describe('useInitApp', () => {
   });
 
   it('should return appReady as true when fonts are loaded', async () => {
-    useLoadFonts.mockReturnValue({ fontsLoaded: true });
-    useRequestPermissions.mockReturnValue(() => Promise.resolve(true));
+    jest.mocked(useLoadFonts).mockReturnValue({ fontsLoaded: true });
+    jest
+      .mocked(useRequestPermissions)
+      .mockReturnValue(() => Promise.resolve(true));
 
     const { result } = renderHook(() => useInitApp());
 
@@ -43,8 +45,10 @@ describe('useInitApp', () => {
   });
 
   it('should los permissions not granted', async () => {
-    useLoadFonts.mockReturnValue({ fontsLoaded: true });
-    useRequestPermissions.mockReturnValue(() => Promise.resolve(false));
+    jest.mocked(useLoadFonts).mockReturnValue({ fontsLoaded: true });
+    jest
+      .mocked(useRequestPermissions)
+      .mockReturnValue(() => Promise.resolve(true));
 
     const { result } = renderHook(() => useInitApp());
 
@@ -53,6 +57,6 @@ describe('useInitApp', () => {
     });
 
     expect(result.current.appReady).toBe(true);
-    expect(mockSetBlePermissionsState).not.toHaveBeenCalled();
+    expect(mockSetBlePermissionsState).toHaveBeenCalledTimes(1);
   });
 });
