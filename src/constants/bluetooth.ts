@@ -10,7 +10,6 @@ export const PRESSURE_CHARACTERISTICS = {
 export const CONNECTION_OPTIONS = {
   autoConnect: false,
   requestMTU: 96,
-  timeout: Platform.OS === 'android' ? undefined : 45000,
 };
 
 export const MESSAGES: Record<MessageTypes, string> = {
