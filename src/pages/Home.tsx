@@ -4,12 +4,17 @@ import useBleConnections from '@/src/hooks/bluetooth/useBleConnections';
 import usePressureMeasurement from '@/src/hooks/pressure/usePressureMeasurement';
 import Animation from '@/src/components/Animation';
 import MeasurementResult from '@/src/components/MeasurementResult';
+import { useBle } from '../data/ble.store';
 
 const scanAnimation = require('@/animations/scan-animation.json') as string;
 const measureAnimation =
   require('@/animations/measure-animation.json') as string;
 
 const Home = () => {
+  const bleState = useBle(
+    // TODO: Show powered off bt message
+    (state) => state.bleState
+  );
   const { measurement, device } = usePressureMeasurement();
   useBleConnections();
 
